@@ -1,0 +1,55 @@
+#+TITLE: Github autopush
+#+OPTIONS: ^:nil
+#+PROPERTY: header-args:sh :session *shell github-autopush sh* :results silent raw
+#+PROPERTY: header-args:python :session *shell github-autopush python* :results silent raw
+
+** System environment
+
+- Debian 9.11
+
+- git 2.20.1
+
+** About
+
+A script to automatically push a local git repo to github.com
+organisation.
+
+** Set the github token
+
+#+BEGIN_SRC sh
+export GITHUB_TOKEN="0000000000000000000000000000000000000000"
+#+END_SRC
+
+#+BEGIN_SRC sh :tangle src/github-autopush.sh
+source ~/.github
+#+END_SRC
+
+** Set the shebang
+
+#+BEGIN_SRC sh :tangle src/github-autopush.sh
+#!/bin/bash
+#+END_SRC
+
+** Set the org name
+
+#+BEGIN_SRC sh :tangle src/github-autopush.sh
+ORG_NAME="cryptokasten"
+#+END_SRC
+
+** Get the project name
+
+#+BEGIN_SRC sh :tangle src/github-autopush.sh
+PROJECT_NAME=`pwd | rev | cut -d"/" -f 1 | rev`
+#+END_SRC
+
+** Create github repo
+
+#+BEGIN_SRC sh :tangle src/github-autopush.sh
+curl -H "Authorization: token $GITHUB_TOKEN" --data "{\"name\":\"$PROJECT_NAME\"}" https://api.github.com/orgs/$ORG_NAME/repos
+#+END_SRC
+
+** Add origin
+
+#+BEGIN_SRC sh :tangle src/github-autopush.sh
+git remote add origin git@github.com:$ORG_NAME/$PROJECT_NAME.git
+#+END_SRC
