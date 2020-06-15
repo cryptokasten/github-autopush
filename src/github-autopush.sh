@@ -10,4 +10,4 @@ curl -H "Authorization: token $GITHUB_TOKEN" --data "{\"name\":\"$PROJECT_NAME\"
 
 git remote add origin git@github.com:$ORG_NAME/$PROJECT_NAME.git
 
-git push
+git push --set-upstream origin master

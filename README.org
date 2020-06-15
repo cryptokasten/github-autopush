@@ -57,5 +57,5 @@ git remote add origin git@github.com:$ORG_NAME/$PROJECT_NAME.git
 ** Push
 
 #+BEGIN_SRC sh :tangle src/github-autopush.sh
-git push
+git push --set-upstream origin master
 #+END_SRC
