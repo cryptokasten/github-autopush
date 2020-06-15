@@ -53,3 +53,9 @@ curl -H "Authorization: token $GITHUB_TOKEN" --data "{\"name\":\"$PROJECT_NAME\"
 #+BEGIN_SRC sh :tangle src/github-autopush.sh
 git remote add origin git@github.com:$ORG_NAME/$PROJECT_NAME.git
 #+END_SRC
+
+** Push
+
+#+BEGIN_SRC sh :tangle src/github-autopush.sh
+git push
+#+END_SRC
