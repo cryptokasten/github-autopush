@@ -1,6 +1,6 @@
-source ~/.github
-
 #!/bin/bash
+
+source ~/.github
 
 ORG_NAME="cryptokasten"
 

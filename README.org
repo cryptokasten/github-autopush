@@ -14,6 +14,12 @@
 A script to automatically push a local git repo to github.com
 organisation.
 
+** Set the shebang
+
+#+BEGIN_SRC sh :tangle src/github-autopush.sh
+#!/bin/bash
+#+END_SRC
+
 ** Set the github token
 
 #+BEGIN_SRC sh
@@ -22,12 +28,6 @@ export GITHUB_TOKEN="0000000000000000000000000000000000000000"
 
 #+BEGIN_SRC sh :tangle src/github-autopush.sh
 source ~/.github
-#+END_SRC
-
-** Set the shebang
-
-#+BEGIN_SRC sh :tangle src/github-autopush.sh
-#!/bin/bash
 #+END_SRC
 
 ** Set the org name
