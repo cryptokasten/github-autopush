@@ -6,7 +6,13 @@ ORG_NAME="cryptokasten"
 
 PROJECT_NAME=`pwd | rev | cut -d"/" -f 1 | rev`
 
-curl -H "Authorization: token $GITHUB_TOKEN" --data "{\"name\":\"$PROJECT_NAME\"}" https://api.github.com/orgs/$ORG_NAME/repos
+TAGS=`cat README.org | grep "#+TAGS" | cut -d":" -f2 | sed 's/ //g' | sed 's/,/","/g'`
+
+DESCRIPTION=`cat README.org | grep "#+DESCRIPTION" | cut -d":" -f2`
+
+curl -H "Authorization: token $GITHUB_TOKEN" --data "{\"name\":\"$PROJECT_NAME\", \"description\": \"$DESCRIPTION\"}" https://api.github.com/orgs/$ORG_NAME/repos
+
+curl -X PUT -H "Accept: application/vnd.github.mercy-preview+json" -H "Authorization: token $GITHUB_TOKEN" --data "{\"names\":[\"$TAGS\"]}" https://api.github.com/repos/$ORG_NAME/$PROJECT_NAME/topics
 
 git remote add origin git@github.com:$ORG_NAME/$PROJECT_NAME.git
 
