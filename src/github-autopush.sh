@@ -8,7 +8,7 @@ PROJECT_NAME=`pwd | rev | cut -d"/" -f 1 | rev`
 
 TAGS=`cat README.org | grep "#+TAGS" | cut -d":" -f2 | sed 's/ //g' | sed 's/,/","/g'`
 
-DESCRIPTION=`cat README.org | grep "#+DESCRIPTION" | cut -d":" -f2`
+DESCRIPTION=`cat README.org | grep "#+TITLE" | sed "s/#+TITLE: //g"`
 
 curl -H "Authorization: token $GITHUB_TOKEN" --data "{\"name\":\"$PROJECT_NAME\", \"description\": \"$DESCRIPTION\"}" https://api.github.com/orgs/$ORG_NAME/repos
 
