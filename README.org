@@ -51,7 +51,16 @@ TAGS=`cat README.org | grep "#+TAGS" | cut -d":" -f2 | sed 's/ //g' | sed 's/,/"
 ** Get the project description
 
 #+BEGIN_SRC sh :tangle src/github-autopush.sh
-DESCRIPTION=`cat README.org | grep "#+TITLE" | sed "s/#+TITLE: //g"`
+DESCRIPTION=`cat README.org | grep "#+DESCRIPTION" | sed "s/^#+DESCRIPTION: //g" | grep -v "#+"`
+#+END_SRC
+
+** Use title as description if empty
+
+#+BEGIN_SRC sh :tangle src/github-autopush.sh
+if [[ $DESCRIPTION == "" ]]
+then
+    DESCRIPTION=`cat README.org | grep "#+TITLE" | sed "s/^#+TITLE: //g" | grep -v "#+"`
+fi
 #+END_SRC
 
 ** Create github repo
