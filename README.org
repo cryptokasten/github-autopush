@@ -3,6 +3,8 @@
 #+PROPERTY: header-args:sh :session *shell github-autopush sh* :results silent raw
 #+PROPERTY: header-args:python :session *shell github-autopush python* :results silent raw
 
+[[https://github.com/cryptokasten][file:https://img.shields.io/badge/dynamic/json.svg?url=https://api.github.com/users/cryptokasten&label=Cryptokasten&query=$.public_repos]]
+
 ** System environment
 
 - Debian 9.11
